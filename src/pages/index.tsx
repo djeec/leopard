@@ -3,11 +3,16 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 
 import Banner from '@/components/banner'
+import Forecast from '@/components/forecast'
+
+import Link from 'next/link'
+
 import styles from '@/styles/Home.module.css'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Head>
@@ -17,6 +22,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Banner></Banner>
+
+      <Link href='forecasts/create'>Create Forecast</Link>
     </>
   )
 }
+
+export default Home;
