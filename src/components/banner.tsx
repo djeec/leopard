@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link';
 
-import styles from '@/styles/Banner.module.css'
+import styles from '@/styles/banner.module.css'
 
 const Banner = () => {
     return (
@@ -17,7 +17,6 @@ const Banner = () => {
                         priority
                     />
                 </Link>
-                <h1>Banner</h1>
             </>          
         </header>
     )
