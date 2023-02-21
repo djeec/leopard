@@ -30,7 +30,7 @@ Similar to stackoverflow
 # Ideas
 View Random Prediction
 
-Other names: thesis, theory, conjecture, hypothesis, guess
+Other names: thesis, theory, conjecture, hypothesis, guess, forecast
 
 Have confidence level 
 - predictor 

@@ -11,6 +11,8 @@ const CreateForecast = () => {
         <Banner></Banner>
         <h1>Create Forecast</h1>
 
+        <textarea name='content' />
+
         </Layout>
         
     )

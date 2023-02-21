@@ -24,7 +24,9 @@ const Home = () => {
       </Head>
       <Banner></Banner>
 
-      <Link href='forecasts/create'>Create Forecast</Link>
+      <Link href='forecasts/create'>Create Forecast</Link><br />
+
+      <Link href='forecasts/list'>List Forecasts</Link>
     </Layout>
   )
 }

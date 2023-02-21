@@ -43,3 +43,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 # Helpful Sites
 [Next JS](https://nextjs.org/learn/basics)
+
+
+# Pages
+
+- Banner
+    - Add Forecast
+
+- Banner
