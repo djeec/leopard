@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+import { ForecastProps, ForecastPropsCollection } from '@/types/forecastTypes';
+
 
 const root = process.cwd();
 
@@ -22,24 +24,30 @@ export async function getForecastBySlug(author: string, slug: string) {
   }
 }
 
-export async function getAllForecastsWithMetaData(author: string) {
-  const files = fs.readdirSync(path.join(root, 'forecasts', author))
+export async function getAllForecastsWithMetaData(authorId: string) : Promise<ForecastPropsCollection> {
+    const files = fs.readdirSync(path.join(root, 'forecasts', authorId))
 
   // @ts-ignore
   const forecastDataArray = files.map((fileName : string) => {
-    const source = fs.readFileSync(path.join(root, 'forecasts', author, fileName), 'utf8')
+    const source = fs.readFileSync(path.join(root, 'forecasts', authorId, fileName), 'utf8')
     const { data } = matter(source)
-    console.log('reading: ' + fileName);
-    console.log(data)
-    return {
+
+    let props : ForecastProps;
+
+    props = {
         metaData: data,
         slug: fileName.replace('.md', ''),
       }
-  }, []);
 
-  console.log(forecastDataArray)
+    return props;
+  });
 
-  return forecastDataArray;
+  let allForecastsWithMetaData : ForecastPropsCollection;
+  allForecastsWithMetaData = {
+    forecasts: forecastDataArray
+  }
+
+  return allForecastsWithMetaData;
 }
 
 // // todo - update to take author id

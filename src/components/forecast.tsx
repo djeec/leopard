@@ -1,6 +1,6 @@
 import styles from '@/styles/Forecast.module.css'
-import Banner from './banner';
-import Layout from './layout';
+import Banner from '@/components/banner';
+import Layout from '@/components/layout';
 
 const Forecast = () => {
     return (

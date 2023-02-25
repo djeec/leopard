@@ -3,12 +3,15 @@
 // thanks https://bionicjulia.com/blog/setting-up-nextjs-markdown-blog-with-typescript
 
 
+// export type ForecastMetaData = {
+//     id: string;     // unique id
+//     author: string; // author
+//     timestamp: Date
+//     title: string;  // title
+//     tags: string[]; // tags for organizing
+// }
 export type ForecastMetaData = {
-    id: string;     // unique id
-    author: string; // author
-    timestamp: Date
-    title: string;  // title
-    tags: string[]; // tags for organizing
+    [key:string] : string
 }
 
 export type ForecastProps = {
