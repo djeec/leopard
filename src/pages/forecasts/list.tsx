@@ -6,7 +6,7 @@ import {AuthorForcastCollection, ForecastProps} from '@/types/forecastTypes';
 import { GetStaticProps } from 'next'
 
 import {getAllForecastsWithMetaData} from '@/lib/getForecasts';
-import ForcastList from "@/components/ForecastList";
+import ForcastList from "@/components/forecastList";
 
 // export async function getStaticProps() {
 //     const allForecastsData = await getAllForecastsWithMetaData('100');

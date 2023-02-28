@@ -1,6 +1,11 @@
 import { ForecastProps } from "@/types/forecastTypes";
 import useForecastList from "@/hooks/useForecastList";
 import { REQUEST_STATUS } from "@/lib/utilities";
+import ForecastListRow from "./forecastListRow";
+
+{/* 
+This component will render a list of forecasts
+*/}
 
 const ForcastList = () => {
     const {
@@ -26,15 +31,14 @@ const ForcastList = () => {
         }
 
     return (
-
-    <ul>
-                {forecastData?.forecasts.map((data : ForecastProps) => (
-                    <li>
-                    <h3>{data.metaData.title}</h3>
-                    <p>{data.metaData.id}</p>
-                    </li>
-                ))}
-            </ul>
+        <>
+        <table>
+            {forecastData?.forecasts?.map((data : ForecastProps) => (
+                <ForecastListRow key={data.metaData.id} data={data}></ForecastListRow>
+                
+            ))}
+        </table>
+        </>
     )
 }
 
