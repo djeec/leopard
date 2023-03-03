@@ -2,7 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-import { ForecastProps, ForecastPropsCollection } from '@/types/forecastTypes';
+import { remark } from 'remark';
+import html from 'remark-html';
+
+import { ForecastProps, ForecastPropsCollection, ForecastData } from '@/types/forecastTypes';
 
 
 const root = process.cwd();
@@ -13,14 +16,24 @@ export async function getFiles(author: string) {
 }
 
 // slug - https://en.wikipedia.org/wiki/Clean_URL#Slug
-export async function getForecastBySlug(author: string, slug: string) {
+export async function getForecastBySlug(author: string, slug: string) : Promise<ForecastData> {
+  
   const source : string = fs.readFileSync(path.join(root, 'forecasts', author, `${slug}.md`), 'utf8')
 
   const { data, content } = matter(source)
 
+  // render the html
+  // Use remark to convert markdown into HTML string
+  const processedContent = await remark()
+    .use(html)
+    .process(content);
+  
+    const contentHtml = processedContent.toString();
+
   return {
-    metaData: data,
-    markdownBody: content,
+    forecastProps: {metaData: data, slug: slug},
+    content: content,
+    html: contentHtml
   }
 }
 

@@ -11,7 +11,7 @@ return (
         <td>{metaData.id}</td>
         {/* <td><Link href={`/forecast/${encodeURIComponent(metaData.id)}`}>Go to pages/forecast/[id].js</Link></td> */}
         <td><Link href={{
-            pathname: '/forecasts/[id]',
+            pathname: '/forecast/[id]',
             query: {id: metaData.id}
         }}>Go to pages/forecast/[id].js</Link></td>
     </tr>

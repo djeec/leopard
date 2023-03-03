@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 
 import { REQUEST_STATUS, delay } from "@/lib/utilities";
-//import { getAllForecastsWithMetaData } from "@/lib/getForecasts";
-import { ForecastPropsCollection } from "@/types/forecastTypes";
+import { ForecastData } from "@/types/forecastTypes";
 
 // custom hook for retrieving data
-function useForecastList(authorId:string, delayTime: number = 1000 ) {
-    const [forecastList, setforecastList] = useState<ForecastPropsCollection|null>(null);
+function useForecast(authorId:string, slug:string, delayTime: number = 1000 ) {
+    const [forecastData, setForecastData] = useState<ForecastData|null>(null);
     const [requestStatus, setRequestStatus] = useState(REQUEST_STATUS.LOADING);
     const [error, setError] = useState("");
 
@@ -18,10 +17,10 @@ function useForecastList(authorId:string, delayTime: number = 1000 ) {
             setRequestStatus(REQUEST_STATUS.SUCCESS);
 
             //const allForecastsData = await getAllForecastsWithMetaData(authorId);
-            const res = await fetch('/api/all-forecast-data');
-            const data = await res.json() as ForecastPropsCollection;
+            const res = await fetch('/api/forecast-data');
+            const data = await res.json() as ForecastData;
 
-            setforecastList(data);
+            setForecastData(data);
           } catch (e) {            
             setRequestStatus(REQUEST_STATUS.FAILURE);
 
@@ -35,10 +34,10 @@ function useForecastList(authorId:string, delayTime: number = 1000 ) {
       }, []);
 
       return {
-        forecastList,
+        forecastData,
         requestStatus,
         error
       };
 }
 
-export default useForecastList;
+export default useForecast;

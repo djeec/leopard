@@ -1,20 +1,17 @@
-import { ForecastPropsCollection } from '@/types/forecastTypes'
+import { ForecastData } from '@/types/forecastTypes'
 
-import { getAllForecastsWithMetaData } from "@/lib/getForecasts";
+import { getForecastBySlug } from "@/lib/getForecasts";
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type Data = {
-  name: string
-}
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ForecastPropsCollection>
+  res: NextApiResponse<ForecastData>
 ) {
-    let authorId = '100';
-    let data : ForecastPropsCollection;
-    data = await getAllForecastsWithMetaData(authorId);
-
-    res.status(200).json(data)
+  let authorId = '100';
+  let slug = '1';
+  let data : ForecastData;
+    
+  data = await getForecastBySlug(authorId, slug);
+  res.status(200).json(data)
 }

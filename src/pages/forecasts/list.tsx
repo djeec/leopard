@@ -2,10 +2,14 @@ import Banner from "@/components/banner";
 import Layout from "@/components/layout";
 import Head from "next/head";
 
-import {AuthorForcastCollection, ForecastProps} from '@/types/forecastTypes';
+import {AuthorForecastCollection, ForecastProps} from '@/types/forecastTypes';
 import ForcastList from "@/components/forecastList";
 
-const ListForecasts = ({ forecasts, author}: AuthorForcastCollection) => {
+// todo - retrieve author from sign-in data
+
+//const ListForecasts = ({ forecasts, author}: AuthorForecastCollection) => {
+const ListForecasts = () => {    
+    let author: string = '100';
     return (
         <Layout>
             <Head>
@@ -13,8 +17,7 @@ const ListForecasts = ({ forecasts, author}: AuthorForcastCollection) => {
             </Head>
             <Banner></Banner>
             <h1>List Forecast for author {author}</h1>
-            <ForcastList></ForcastList>
-            
+            <ForcastList authorId={author}></ForcastList>
         </Layout>
     )
 }

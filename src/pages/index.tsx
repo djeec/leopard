@@ -12,6 +12,8 @@ import Layout from '@/components/layout'
 const inter = Inter({ subsets: ['latin'] })
 
 const Home = () => {
+  let author: string = '100'
+
   return (
     <Layout>
       <Head>
@@ -22,9 +24,10 @@ const Home = () => {
       </Head>
       <Banner></Banner>
 
-      <Link href='forecasts/create'>Create Forecast</Link><br />
+      <Link href='forecast/create'>Create a Forecast</Link><br />
 
-      <Link href='forecasts/list'>List Forecasts</Link>
+      {/* todo - pass in author here */}
+      <Link href='forecasts/list'>List all Forecasts for author {author}</Link>
     </Layout>
   )
 }

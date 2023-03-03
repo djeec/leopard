@@ -7,12 +7,12 @@ import ForecastListRow from "./forecastListRow";
 This component will render a list of forecasts
 */}
 
-const ForcastList = () => {
+const ForcastList = ({authorId}:{authorId:string}) => {
     const {
-        forecastData,
+        forecastList,
         requestStatus,
         error
-    } = useForecastList('100', 2000);
+    } = useForecastList(authorId, 2000);
 
     if (requestStatus === REQUEST_STATUS.FAILURE) {
         return (
@@ -25,7 +25,7 @@ const ForcastList = () => {
     if (requestStatus === REQUEST_STATUS.LOADING) return <div>Loading...</div>
 
     if (requestStatus === REQUEST_STATUS.SUCCESS) { 
-        if (!forecastData) {
+        if (!forecastList) {
              return <div>No forecastsss!</div>
             }
         }
@@ -33,7 +33,7 @@ const ForcastList = () => {
     return (
         <>
         <table>
-            {forecastData?.forecasts?.map((data : ForecastProps) => (
+            {forecastList?.forecasts?.map((data : ForecastProps) => (
                 <ForecastListRow key={data.metaData.id} data={data}></ForecastListRow>
                 
             ))}

@@ -19,11 +19,17 @@ export type ForecastProps = {
     slug: string;
 }
 
+export type ForecastData = {
+    forecastProps: ForecastProps;
+    content: string;
+    html: string;
+}
+
 export type ForecastPropsCollection = {
     forecasts?: ForecastProps[];
 }
 
-export interface AuthorForcastCollection extends ForecastPropsCollection {
+export interface AuthorForecastCollection extends ForecastPropsCollection {
     author: string; // just an example right now
 }
 

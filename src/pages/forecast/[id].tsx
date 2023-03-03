@@ -1,12 +1,15 @@
 import Banner from "@/components/banner";
+import Forecast from "@/components/forecast";
 import Layout from "@/components/layout";
-import Head from 'next/head'
 
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const Forecast = () => {
+const ForecastDetails = () => {
     const router = useRouter()
     const { id } = router.query
+    let author: string = '100';
+    
     return (
         <Layout>
             <Head>
@@ -14,6 +17,7 @@ const Forecast = () => {
             </Head>
             <Banner></Banner>
             <h1>Welcome to Forecast {id}</h1>
+            <Forecast slug={id}></Forecast>
             
             
             
@@ -21,4 +25,4 @@ const Forecast = () => {
     )
 }
 
-export default Forecast;
+export default ForecastDetails;
