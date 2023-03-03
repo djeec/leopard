@@ -13,7 +13,7 @@ return (
         <td><Link href={{
             pathname: '/forecast/[id]',
             query: {id: metaData.id}
-        }}>Go to pages/forecast/[id].js</Link></td>
+        }}>pages/forecast/{metaData.id}</Link></td>
     </tr>
 )
 

@@ -5,7 +5,7 @@ import styles from '@/styles/banner.module.css'
 
 const Banner = () => {
     return (
-        <header>
+        <header className='mb-3'>
             <>
                 <Link href='/'>
                     <Image

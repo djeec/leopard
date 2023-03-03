@@ -1,8 +1,7 @@
 import styles from '@/styles/Forecast.module.css'
-import Banner from '@/components/banner';
-import Layout from '@/components/layout';
 
 import useForecast from "@/hooks/useForecast";
+import { REQUEST_STATUS } from '@/lib/utilities';
 
 const Forecast = ({slug}:{slug:string}) => {
     const {
@@ -11,7 +10,15 @@ const Forecast = ({slug}:{slug:string}) => {
         error
     } = useForecast('100', slug, 2000);
 
-    if (!forecastData) return <div>Loading forecast...</div>
+    if (requestStatus === REQUEST_STATUS.FAILURE) {
+        return (
+          <div className="text-danger">
+            ERROR: <b>loading Forecast Data Failed {error}</b>
+          </div>
+        );
+    }
+
+    if (requestStatus === REQUEST_STATUS.LOADING) return <div>Loading...</div>
 
     return (
         <>

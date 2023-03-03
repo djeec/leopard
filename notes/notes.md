@@ -11,20 +11,20 @@ Similar to stackoverflow
 	- SignIn
 - Footer
 
-## View My Predictions Page
+## View My Forecasts Page
 - Banner
-	- ViewMyPredictions
+	- ViewMyForecasts
 - Footer
 
-## View Followed Predictions Page
+## View Followed Forecasts Page
 - Banner
-	- ViewFollowedPredictions
+	- ViewFollowedForecasts
 - Footer
 
-## View Hot Predictions Page
-## View My Predictions Page
+## View Hot Forecasts Page
+## View My Forecasts Page
 - Banner
-	- ViewHotPredictions
+	- ViewHotForecasts
 - Footer
 
 # Ideas
@@ -38,4 +38,4 @@ Have confidence level
 
 Need rules for reputation
 
-Add tags to predictions (hash tags)
+Add tags to forecasts (hash tags)

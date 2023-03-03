@@ -32,11 +32,20 @@ const ForcastList = ({authorId}:{authorId:string}) => {
 
     return (
         <>
-        <table>
-            {forecastList?.forecasts?.map((data : ForecastProps) => (
-                <ForecastListRow key={data.metaData.id} data={data}></ForecastListRow>
-                
-            ))}
+        <table className="table table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Id</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {forecastList?.forecasts?.map((data : ForecastProps) => (
+                    <ForecastListRow key={data.metaData.id} data={data}></ForecastListRow>
+                    
+                ))}
+            </tbody>
         </table>
         </>
     )

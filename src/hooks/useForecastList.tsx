@@ -17,7 +17,6 @@ function useForecastList(authorId:string, delayTime: number = 1000 ) {
             //throw "Had Error."
             setRequestStatus(REQUEST_STATUS.SUCCESS);
 
-            //const allForecastsData = await getAllForecastsWithMetaData(authorId);
             const res = await fetch('/api/all-forecast-data');
             const data = await res.json() as ForecastPropsCollection;
 

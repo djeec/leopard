@@ -2,10 +2,10 @@ import Banner from "@/components/banner";
 import Layout from "@/components/layout";
 import Head from "next/head";
 
-import {AuthorForecastCollection, ForecastProps} from '@/types/forecastTypes';
 import ForcastList from "@/components/forecastList";
 
 // todo - retrieve author from sign-in data
+// react context
 
 //const ListForecasts = ({ forecasts, author}: AuthorForecastCollection) => {
 const ListForecasts = () => {    
