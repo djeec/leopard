@@ -1,4 +1,5 @@
 import styles from '@/styles/layout.module.css'
+import Banner from './banner';
 
 type Props = {
     children?: React.ReactNode
@@ -6,7 +7,10 @@ type Props = {
 
 const Layout = ({children} : Props) => {
     return (
-        <div className={styles.container}>{children}</div>
+        <div className={styles.container}>
+            <Banner></Banner>
+            {children}
+        </div>
     );
 }
 

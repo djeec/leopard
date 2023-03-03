@@ -12,8 +12,8 @@ const Document = () => {
           rel="stylesheet"
         />
       </Head>
-      <body>
-        <div className='container'>
+      <body className='bg-light'>
+        <div className='container '>
           <Main />
         </div>
         <NextScript />

@@ -11,7 +11,7 @@
 //     tags: string[]; // tags for organizing
 // }
 export type ForecastMetaData = {
-    [key:string] : string
+    [key:string] : string|string[]
 }
 
 export type ForecastProps = {

@@ -8,18 +8,17 @@ import ForcastList from "@/components/forecastList";
 // react context
 
 //const ListForecasts = ({ forecasts, author}: AuthorForecastCollection) => {
-const ListForecasts = () => {    
+const ListForecastsPage = () => {    
     let author: string = '100';
     return (
         <Layout>
             <Head>
                 <title>Forecaster - List my Forecasts</title>
             </Head>
-            <Banner></Banner>
             <h1>List Forecast for author {author}</h1>
             <ForcastList authorId={author}></ForcastList>
         </Layout>
     )
 }
 
-export default ListForecasts;
+export default ListForecastsPage;

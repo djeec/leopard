@@ -20,6 +20,9 @@ const Forecast = ({slug}:{slug:string}) => {
 
     if (requestStatus === REQUEST_STATUS.LOADING) return <div>Loading...</div>
 
+    // request status is SUCCESS
+    if (!forecastData) return <div>No data...</div>
+
     return (
         <>
         <h1>{forecastData.forecastProps.metaData['title']}</h1>
