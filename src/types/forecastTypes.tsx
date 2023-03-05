@@ -33,3 +33,12 @@ export interface AuthorForecastCollection extends ForecastPropsCollection {
     author: string; // just an example right now
 }
 
+export type ForecastCreateData = {
+    authorId: string;
+    title: string;
+    content: string;
+    html: string;
+    currentTag: string;
+    tags: string[];
+}
+

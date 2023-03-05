@@ -1,5 +1,5 @@
 import { ForecastProps } from "@/types/forecastTypes";
-import useForecastList from "@/hooks/useForecastList";
+import useGetForecastList from "@/hooks/useGetForecastList";
 import { REQUEST_STATUS } from "@/lib/utilities";
 import ForecastListRow from "./forecastListRow";
 
@@ -12,7 +12,7 @@ const ForcastList = ({authorId}:{authorId:string}) => {
         forecastList,
         requestStatus,
         error
-    } = useForecastList(authorId, 2000);
+    } = useGetForecastList(authorId, 2000);
 
     if (requestStatus === REQUEST_STATUS.FAILURE) {
         return (

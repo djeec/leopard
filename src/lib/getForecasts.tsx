@@ -9,16 +9,17 @@ import { ForecastProps, ForecastPropsCollection, ForecastData } from '@/types/fo
 
 
 const root = process.cwd();
+const forecastsDirectory = path.join(root, 'data', 'forecasts');
 
 
 export async function getFiles(author: string) {
-  return fs.readdirSync(path.join(root, 'forecasts', author), 'utf-8')
+  return fs.readdirSync(path.join(forecastsDirectory, author), 'utf-8')
 }
 
 // slug - https://en.wikipedia.org/wiki/Clean_URL#Slug
 export async function getForecastBySlug(author: string, slug: string) : Promise<ForecastData> {
   
-  const source : string = fs.readFileSync(path.join(root, 'forecasts', author, `${slug}.md`), 'utf8')
+  const source : string = fs.readFileSync(path.join(forecastsDirectory, author, `${slug}.md`), 'utf8')
 
   const { data, content } = matter(source)
 
@@ -38,11 +39,11 @@ export async function getForecastBySlug(author: string, slug: string) : Promise<
 }
 
 export async function getAllForecastsWithMetaData(authorId: string) : Promise<ForecastPropsCollection> {
-    const files = fs.readdirSync(path.join(root, 'forecasts', authorId))
+    const files = fs.readdirSync(path.join(forecastsDirectory, authorId))
 
   // @ts-ignore
   const forecastDataArray = files.map((fileName : string) => {
-    const source = fs.readFileSync(path.join(root, 'forecasts', authorId, fileName), 'utf8')
+    const source = fs.readFileSync(path.join(forecastsDirectory, authorId, fileName), 'utf8')
     const { data } = matter(source)
 
     let props : ForecastProps;

@@ -1,6 +1,6 @@
 import styles from '@/styles/Forecast.module.css'
 
-import useForecast from "@/hooks/useForecast";
+import useGetForecast from "@/hooks/useGetForecast";
 import { REQUEST_STATUS } from '@/lib/utilities';
 
 const Forecast = ({slug}:{slug:string}) => {
@@ -8,7 +8,7 @@ const Forecast = ({slug}:{slug:string}) => {
         forecastData,
         requestStatus,
         error
-    } = useForecast('100', slug, 2000);
+    } = useGetForecast('100', slug, 2000);
 
     if (requestStatus === REQUEST_STATUS.FAILURE) {
         return (

@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 const ForecastDetailsPage = () => {
     const router = useRouter()
     const id = router.query['id'] as string;
-    let author: string = '100';
     
     return (
         <Layout>

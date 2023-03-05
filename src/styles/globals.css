@@ -12,7 +12,13 @@ img {
   display: block;
 }
 
+
+/* Classes */
 .info-box {
   background-color: lightcyan;
+}
+
+.textarea-static {
+  resize: none;
 }
 
