@@ -1,7 +1,10 @@
 import Layout from "@/components/layout";
+import { renderMarkdown } from "@/lib/renderMarkdown";
 import { ForecastCreateData } from "@/types/forecastTypes";
 import Head from "next/head";
 import { useState } from "react";
+
+import useRenderMarkdown from "@/hooks/useRenderMarkdown";
 
 const CreateForecastPage = () => {
     let date: string = new Date().toUTCString();
@@ -30,12 +33,26 @@ const CreateForecastPage = () => {
         tags: []
     }
 
+    
+
     const [newForecast, setNewForecast] = useState(emptyForecast);
+
+    const {
+        html
+    } = useRenderMarkdown(newForecast.content);
 
     const onForecastSubmitClick = () => {
         useRegisterForecast(newForecast);
         setNewForecast(emptyForecast);
       };
+
+    
+
+    // const {
+    //     forecastData,
+    //     requestStatus,
+    //     error
+    // } = useGetForecast('100', slug, 2000);
 
     return (
         <Layout>
@@ -91,7 +108,10 @@ const CreateForecastPage = () => {
                     <textarea 
                         id="tags"
                         value={newForecast.content}
-                        onChange={(e)=>{setNewForecast({...newForecast, content: e.target.value})}}
+                        onChange={(e)=>{
+                            setNewForecast({...newForecast, content: e.target.value});
+
+                        }}
                         placeholder="Make your forecast"
                         className="w-100 textarea-static"
                         rows={12}
@@ -103,7 +123,7 @@ const CreateForecastPage = () => {
                         <div className="card-header"><strong>Preview</strong></div>
                         <div className="card-body">
                             <h5 className="card-title">{newForecast.title}</h5>
-                            <span>{newForecast.html}</span>
+                            <div dangerouslySetInnerHTML={{__html: html}}></div>
                         </div>
                     </div>
                 </span>

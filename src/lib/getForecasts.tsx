@@ -2,10 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-import { remark } from 'remark';
-import html from 'remark-html';
-
 import { ForecastProps, ForecastPropsCollection, ForecastData } from '@/types/forecastTypes';
+import { renderMarkdown } from './renderMarkdown';
 
 
 const root = process.cwd();
@@ -24,12 +22,7 @@ export async function getForecastBySlug(author: string, slug: string) : Promise<
   const { data, content } = matter(source)
 
   // render the html
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
-    .process(content);
-  
-    const contentHtml = processedContent.toString();
+  const contentHtml =await renderMarkdown(content);
 
   return {
     forecastProps: {metaData: data, slug: slug},

@@ -13,9 +13,7 @@ function useGetForecast(authorId:string, slug:string, delayTime: number = 1000 )
         async function delayFunc() {
           try {
             await delay(delayTime);
-            //throw "Had Error."
 
-            //const allForecastsData = await getAllForecastsWithMetaData(authorId);
             const res = await fetch('/api/forecast-data');
             const data = await res.json() as ForecastData;
 
