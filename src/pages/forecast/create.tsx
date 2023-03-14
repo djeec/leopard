@@ -5,6 +5,7 @@ import Head from "next/head";
 import { useState } from "react";
 
 import useRenderMarkdown from "@/hooks/useRenderMarkdown";
+import TagList from "@/components/tagList";
 
 const CreateForecastPage = () => {
     let date: string = new Date().toUTCString();
@@ -30,7 +31,7 @@ const CreateForecastPage = () => {
         content: "",
         html: "",
         currentTag: "",
-        tags: []
+        tags: ['hi', 'there']
     }
 
     
@@ -88,14 +89,14 @@ const CreateForecastPage = () => {
                     <strong>Tags</strong>
                     <p>Tags are used for classification and queries</p>
                     <div className="border border-dark">
-                        <span>{/* this is for rendered tags */}</span>
+                        <TagList tags={newForecast.tags} />
                         <input 
                             id="tags"
                             type="text"
-                            value={newForecast.tags}
+                            value={newForecast.currentTag}
                             onChange={(e)=>{setNewForecast({...newForecast, currentTag: e.target.value})}}
                             placeholder="Enter up to 5 tags"
-                            className="border-0"
+                            className="border-0 col-1"
                             >
                         </input>
                     </div>
@@ -106,7 +107,7 @@ const CreateForecastPage = () => {
                     <strong>Forecast</strong>
                     <p>Knowledge of a subject is demonstrated by being able to sysnthesize current information to predict future occurrences</p>
                     <textarea 
-                        id="tags"
+                        id="content"
                         value={newForecast.content}
                         onChange={(e)=>{
                             setNewForecast({...newForecast, content: e.target.value});
@@ -122,7 +123,7 @@ const CreateForecastPage = () => {
                     <div className="card h-100">
                         <div className="card-header"><strong>Preview</strong></div>
                         <div className="card-body">
-                            <h5 className="card-title">{newForecast.title}</h5>
+                            <h1 className="card-title">{newForecast.title}</h1>
                             <div dangerouslySetInnerHTML={{__html: html}}></div>
                         </div>
                     </div>
