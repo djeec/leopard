@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import useRenderMarkdown from "@/hooks/useRenderMarkdown";
 import TagList from "@/components/tagList";
+import useGetTags from "@/hooks/useGetTags";
 
 const CreateForecastPage = () => {
     let date: string = new Date().toUTCString();
@@ -34,13 +35,18 @@ const CreateForecastPage = () => {
         tags: ['hi', 'there']
     }
 
+    //const emptyFetchedTags : string[] = [];
+
     
 
     const [newForecast, setNewForecast] = useState(emptyForecast);
+    //const [currentFetchedTags, setCurrentFetchedtags] = useState(emptyFetchedTags);
 
     const {
         html
     } = useRenderMarkdown(newForecast.content);
+
+    const fetchedTags = useGetTags(newForecast.currentTag);
 
     const onForecastSubmitClick = () => {
         useRegisterForecast(newForecast);
@@ -63,14 +69,14 @@ const CreateForecastPage = () => {
             <h1>Create Forecast</h1>
 
             <div className="row ">
-                <span className="col-5 p-3 border border-info rounded info-box">
+                <div className="col-5 p-3 border border-info rounded info-box">
                     <h3>Making a good forecast</h3>
                     <p>Add a nice description about all the criteria</p>
-                </span>
+                </div>
             </div>
         
             <div className="row">
-                <span className="col-5 p-3 mt-2 border border-info bg-white">
+                <div className="col-5 p-3 mt-2 border border-info bg-white">
                     <strong>Title</strong>
                     <p>A title should be the ultimate summary of your forecast</p>
                     <input 
@@ -82,10 +88,10 @@ const CreateForecastPage = () => {
                         className="w-100"
                         >
                     </input>
-                </span>
+                </div>
             </div>
             <div className="row">
-                <span className="col-5 p-3 mt-2 border border-info bg-white">
+                <div className="col-5 p-3 mt-2 border border-info bg-white">
                     <strong>Tags</strong>
                     <p>Tags are used for classification and queries</p>
                     <div className="border border-dark">
@@ -100,10 +106,13 @@ const CreateForecastPage = () => {
                             >
                         </input>
                     </div>
-                </span>
+                </div>
+                <div className="col-5 offset-md-1 p-3 mt-2 border border-info bg-white">
+                    <span>{fetchedTags.tagsData}</span>
+                </div>
             </div>
             <div className="row">
-                <span className="col-5 p-3 mt-2 border border-info bg-white">
+                <div className="col-5 p-3 mt-2 border border-info bg-white">
                     <strong>Forecast</strong>
                     <p>Knowledge of a subject is demonstrated by being able to sysnthesize current information to predict future occurrences</p>
                     <textarea 
@@ -118,8 +127,8 @@ const CreateForecastPage = () => {
                         rows={12}
                         >
                     </textarea>
-                </span>
-                <span className="col-5 offset-md-1 p-3 mt-2 border border-info bg-white">
+                </div>
+                <div className="col-5 offset-md-1 p-3 mt-2 border border-info bg-white">
                     <div className="card h-100">
                         <div className="card-header"><strong>Preview</strong></div>
                         <div className="card-body">
@@ -127,15 +136,14 @@ const CreateForecastPage = () => {
                             <div dangerouslySetInnerHTML={{__html: html}}></div>
                         </div>
                     </div>
-                </span>
-                <span className="col-5 p-3 mt-2 border border-info bg-white">
+                </div>
+                <div className="col-5 p-3 mt-2 border border-info bg-white">
                     <div className="col-2">
                         <button className="btn btn-primary" onClick={onForecastSubmitClick}>
                             Add
                         </button>
                     </div>
-                </span>
-                
+                </div>               
             </div>
         </Layout>
         

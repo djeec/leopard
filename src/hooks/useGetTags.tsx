@@ -1,0 +1,38 @@
+import { useState, useEffect } from "react";
+
+import { REQUEST_STATUS, delay } from "@/lib/utilities";
+
+// custom hook for retrieving data
+function useGetTags(query:string) {
+    const [tagsData, setTagsData] = useState<string[]>([]);
+    const [requestStatus, setRequestStatus] = useState(REQUEST_STATUS.LOADING);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        async function fetchFunc(query:string) {
+          try {
+            const res = await fetch('/api/tags-data?' + new URLSearchParams({q:query}));
+            const data = await res.json() as string[];
+
+            setTagsData(data);
+            setRequestStatus(REQUEST_STATUS.SUCCESS);
+          } catch (e) {            
+            setRequestStatus(REQUEST_STATUS.FAILURE);
+
+            let message = 'Unknown error';
+            if (e instanceof Error) message = e.message;
+
+            setError(message);
+          }
+        }
+        fetchFunc(query);
+      }, [query]);
+
+      return {
+        tagsData,
+        requestStatus,
+        error
+      };
+}
+
+export default useGetTags;
