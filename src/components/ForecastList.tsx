@@ -1,6 +1,6 @@
 import { ForecastProps } from "@/types/forecastTypes";
 import useGetForecastList from "@/hooks/useGetForecastList";
-import { REQUEST_STATUS } from "@/lib/utilities";
+import { REQUEST_STATUS } from "@/pages/api/utilities";
 import ForecastListRow from "./forecastListRow";
 
 {/* 
@@ -42,7 +42,7 @@ const ForcastList = ({authorId}:{authorId:string}) => {
             </thead>
             <tbody>
                 {forecastList?.forecasts?.map((data : ForecastProps) => (
-                    <ForecastListRow key={data.metaData.id} data={data}></ForecastListRow>
+                    <ForecastListRow key={data.metaData.id as string} data={data}></ForecastListRow>
                     
                 ))}
             </tbody>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { REQUEST_STATUS, delay } from "@/lib/utilities";
+import { REQUEST_STATUS, delay } from "@/pages/api/utilities";
 import { ForecastData } from "@/types/forecastTypes";
 
 // custom hook for retrieving data
@@ -29,7 +29,7 @@ function useGetForecast(authorId:string, slug:string, delayTime: number = 1000 )
           }
         }
         delayFunc();
-      }, []);
+      }, [delayTime]);
 
       return {
         forecastData,

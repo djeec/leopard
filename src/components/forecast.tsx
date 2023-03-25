@@ -1,7 +1,7 @@
 import styles from '@/styles/Forecast.module.css'
 
 import useGetForecast from "@/hooks/useGetForecast";
-import { REQUEST_STATUS } from '@/lib/utilities';
+import { REQUEST_STATUS } from '@/pages/api/utilities';
 
 const Forecast = ({slug}:{slug:string}) => {
     const {

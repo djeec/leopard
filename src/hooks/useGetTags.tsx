@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { REQUEST_STATUS, delay } from "@/lib/utilities";
+import { REQUEST_STATUS, delay } from "@/pages/api/utilities";
 
 // custom hook for retrieving data
 function useGetTags(query:string, existing: string[]) {
@@ -29,7 +29,7 @@ function useGetTags(query:string, existing: string[]) {
           }
         }
         fetchFunc(query);
-      }, [query]);
+      }, [query, existing]);
 
       return {
         tagsData,

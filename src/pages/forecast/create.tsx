@@ -68,7 +68,8 @@ const CreateForecastPage = () => {
 
 
     const onForecastSubmitClick = () => {
-        useRegisterForecast(newForecast);
+        // todo
+        //useRegisterForecast(newForecast);
         setNewForecast(emptyForecast);
       };
 
