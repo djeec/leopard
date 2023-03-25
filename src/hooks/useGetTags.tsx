@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { REQUEST_STATUS, delay } from "@/lib/utilities";
 
 // custom hook for retrieving data
-function useGetTags(query:string) {
+function useGetTags(query:string, existing: string[]) {
     const [tagsData, setTagsData] = useState<string[]>([]);
     const [requestStatus, setRequestStatus] = useState(REQUEST_STATUS.LOADING);
     const [error, setError] = useState("");
@@ -14,7 +14,10 @@ function useGetTags(query:string) {
             const res = await fetch('/api/tags-data?' + new URLSearchParams({q:query}));
             const data = await res.json() as string[];
 
-            setTagsData(data);
+            // remove any existing tags
+            const filteredData = data.filter(elem=>!existing.includes(elem))
+
+            setTagsData(filteredData);
             setRequestStatus(REQUEST_STATUS.SUCCESS);
           } catch (e) {            
             setRequestStatus(REQUEST_STATUS.FAILURE);

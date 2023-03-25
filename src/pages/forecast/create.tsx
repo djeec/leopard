@@ -1,5 +1,4 @@
 import Layout from "@/components/layout";
-import { renderMarkdown } from "@/lib/renderMarkdown";
 import { ForecastCreateData } from "@/types/forecastTypes";
 import Head from "next/head";
 import { useState } from "react";
@@ -7,6 +6,9 @@ import { useState } from "react";
 import useRenderMarkdown from "@/hooks/useRenderMarkdown";
 import TagList from "@/components/tagList";
 import useGetTags from "@/hooks/useGetTags";
+
+import TagSuggestionList from "@/components/tagSuggestionList";
+
 
 import { usePopper } from 'react-popper';
 
@@ -34,7 +36,7 @@ const CreateForecastPage = () => {
         content: "",
         html: "",
         currentTag: "",
-        tags: ['hi', 'there']
+        tags: []
     }
 
     //const emptyFetchedTags : string[] = [];
@@ -48,13 +50,13 @@ const CreateForecastPage = () => {
         html
     } = useRenderMarkdown(newForecast.content);
 
-    const fetchedTags = useGetTags(newForecast.currentTag);
+    const fetchedTags = useGetTags(newForecast.currentTag, newForecast.tags);
 
     // for popper
-    const [tagsReferenceElement, setTagsReferenceElement] = useState<HTMLElement | null>(null);
-    const [tagsPopperElement, setTagsPopperElement] = useState<HTMLElement | null>(null);
+    //const [tagsReferenceElement, setTagsReferenceElement] = useState<HTMLElement | null>(null);
+    //const [tagsPopperElement, setTagsPopperElement] = useState<HTMLElement | null>(null);
 
-    const { styles, attributes } = usePopper(tagsReferenceElement, tagsPopperElement);
+    //const { styles, attributes } = usePopper(tagsReferenceElement, tagsPopperElement);
 
 
     const onForecastSubmitClick = () => {
@@ -112,17 +114,18 @@ const CreateForecastPage = () => {
                             onChange={(e)=>{setNewForecast({...newForecast, currentTag: e.target.value})}}
                             placeholder="Enter up to 5 tags"
                             className="border-0 col-1"
-                            ref={setTagsReferenceElement}
+                            //ref={setTagsReferenceElement}
                             >
                         </input>
-                        <div ref={setTagsPopperElement} style={styles.popper} {...attributes.popper}>
-                        Popper element
-                        {/* <div ref={setArrowElement} style={styles.arrow} /> */}
-                        </div>
+                        {/*<div ref={setTagsPopperElement} style={styles.popper} {...attributes.popper}>*/}
+                            {/* Popper element */}
+                            {/* <div ref={setArrowElement} style={styles.arrow} /> */}
+                        {/* </div> */}
                     </div>
                 </div>
                 <div className="col-5 offset-md-1 p-3 mt-2 border border-info bg-white">
-                    <span>{fetchedTags.tagsData}</span>
+                    
+                    <TagSuggestionList tags={fetchedTags.tagsData} />
                 </div>
             </div>
             <div className="row">
