@@ -44,13 +44,21 @@ const CreateForecastPage = () => {
     
 
     const [newForecast, setNewForecast] = useState(emptyForecast);
-    //const [currentFetchedTags, setCurrentFetchedtags] = useState(emptyFetchedTags);
+    
+
 
     const {
         html
     } = useRenderMarkdown(newForecast.content);
 
     const fetchedTags = useGetTags(newForecast.currentTag, newForecast.tags);
+
+    const AddTag = (tag:string):undefined => {
+        console.log('Addtag' + tag)
+        const added = newForecast.tags.concat(tag)
+        setNewForecast({...newForecast, tags: added})
+        return
+    }
 
     // for popper
     //const [tagsReferenceElement, setTagsReferenceElement] = useState<HTMLElement | null>(null);
@@ -125,7 +133,7 @@ const CreateForecastPage = () => {
                 </div>
                 <div className="col-5 offset-md-1 p-3 mt-2 border border-info bg-white">
                     
-                    <TagSuggestionList tags={fetchedTags.tagsData} />
+                    <TagSuggestionList tags={fetchedTags.tagsData} addTag={AddTag} />
                 </div>
             </div>
             <div className="row">
