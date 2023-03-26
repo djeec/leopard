@@ -11,6 +11,7 @@ import TagSuggestionList from "@/components/tagSuggestionList";
 
 
 import { usePopper } from 'react-popper';
+import useRegisterForecast from "@/hooks/useRegisterForecast";
 
 const CreateForecastPage = () => {
     let date: string = new Date().toUTCString();
@@ -47,11 +48,11 @@ const CreateForecastPage = () => {
     
 
 
-    const {
-        html
-    } = useRenderMarkdown(newForecast.content);
+    const {html} = useRenderMarkdown(newForecast.content);
 
-    const fetchedTags = useGetTags(newForecast.currentTag, newForecast.tags);
+    const {tagsData} = useGetTags(newForecast.currentTag, newForecast.tags);
+
+    const {registerForecast} = useRegisterForecast("100", newForecast)
 
     const AddTag = (tag:string):undefined => {
         console.log('Addtag' + tag)
@@ -134,7 +135,7 @@ const CreateForecastPage = () => {
                 </div>
                 <div className="col-5 offset-md-1 p-3 mt-2 border border-info bg-white">
                     
-                    <TagSuggestionList tags={fetchedTags.tagsData} addTag={AddTag} />
+                    <TagSuggestionList tags={tagsData} addTag={AddTag} />
                 </div>
             </div>
             <div className="row">
