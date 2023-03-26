@@ -6,7 +6,7 @@ const TagList = ({tags}:{tags:string[]}) => {
             {tags?.map((tag : string) => (
                     <Tag tag={tag} key={tag}></Tag>
                 ))}
-            </span>
+        </span>
     )
 }
 

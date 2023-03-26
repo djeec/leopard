@@ -114,7 +114,7 @@ const CreateForecastPage = () => {
                 <div className="col-5 p-3 mt-2 border border-info bg-white">
                     <strong>Tags</strong>
                     <p>Tags are used for classification and queries</p>
-                    <div className="border border-dark">
+                    <div className="border border-dark p-1">
                         <TagList tags={newForecast.tags} />
                         <input 
                             id="tags"
@@ -140,7 +140,7 @@ const CreateForecastPage = () => {
             <div className="row">
                 <div className="col-5 p-3 mt-2 border border-info bg-white">
                     <strong>Forecast</strong>
-                    <p>Knowledge of a subject is demonstrated by being able to sysnthesize current information to predict future occurrences</p>
+                    <p>Knowledge of a subject is demonstrated by being able to synthesize current information to predict future occurrences</p>
                     <textarea 
                         id="content"
                         value={newForecast.content}

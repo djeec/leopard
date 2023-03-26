@@ -1,10 +1,10 @@
-import SuggestedTag from "./suggestedTag";
+import TagSuggestion from "./tagSuggestion";
 
 const TagSuggestionList = ({tags, addTag}:{tags:string[], addTag:(tag:string)=>undefined}) => {
     return (
         <span>
             {tags?.map((tag : string) => (
-                    <SuggestedTag tag={tag} key={tag} addTag={addTag} />
+                    <TagSuggestion tag={tag} key={tag} addTag={addTag} />
                 ))}
         </span>
     )

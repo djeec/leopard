@@ -5,7 +5,7 @@ import Banner from '@/components/banner'
 
 import Link from 'next/link'
 
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/home.module.css'
 import Layout from '@/components/layout'
 
 

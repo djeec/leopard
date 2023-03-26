@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Tag = ({tag}:{tag:string}) => {
     return (
-        <span className={styles.span}>{tag}<a className={styles.a}>x</a></span>
+        <span className="px-1"><a className="badge rounded-pill bg-info">{tag} x</a></span>
     )
 }
 
